@@ -1,3 +1,142 @@
+ethernet lan 
+set ns [new Simulator]
+
+set tf [open lab3.tr w]
+
+$ns trace-all Stf
+
+set of [open lab3.nam w]
+
+$ns namtrace-all Suf
+
+set no [Sus node]
+
+$no color "magenta"
+
+$no label "src"
+
+set nl [Sns node]
+
+set 12 [$ns node]
+
+$n2 color "magenta"
+
+$n2 label "sre2"
+
+set n3 [Sus node]
+
+$n3 color "blue"
+
+$n3 label "dest2"
+
+set n4 [Sus node]
+
+set n5 [5ns node]
+
+$n5 color "blue"
+
+Sn5 1
+
+abel "dest1"
+$ns make-lan "SnO $nl Sn2 $n3 $n4" 100Mb 100ms LL Queue DropTail Mac/802 3 should come in single line
+
+$ns duplex-link Sn4 $n5 1Mb Ims Drop Tail
+
+set tep0 [new Agent/TCP]
+
+$ns attach-agent $n0 $tep0
+
+set ftp0 [new Application/FTP]
+
+$ftpo attach-agent Step0
+
+$ftp0 set packetSize_500
+
+$ftp0 set interval 0.0001
+
+set sink5 [new Agent/TCPSink]
+
+Sus attach-agent $n5 $sink5
+
+$ns connect Step0 $sink5
+
+set tep2 [new Agent/TCP]
+
+Sns attach-agent Sn2 Step2
+
+set ftp2 [new Application/FTP]
+
+$ftp2 attach-agent Step2
+
+$ftp2 set packetSize 600
+
+$ftp2 set interval 0.001
+
+set sink3 [new Agent/TCPSink]
+
+$ns attach-agent $n3 $sink3.
+
+$ns connect Step2 $sink3
+set filel [open filel.tr w]
+
+Stepo attach $filel
+
+set file2 [open file2.tr w]
+
+Step2 attach $file2
+
+Stepo trace ewnd must put underscore() after ewnd and no space between them
+
+Step2 trace ewnd
+
+proc finish () (
+
+Sns flush-trace
+
+global ns nf tf close $tf close Snf exec nam lab3 nam &
+
+exit 0
+
+} Sus at 0.1 "$ftpo start"
+
+5ns at 5 "$ftpo stop"
+
+Sus at 7 "$ftp0 start"
+
+Sus at 0.2 "Sftp2 start"
+
+Sns at & "$ftp2 stop"
+
+Sas at 14 "$ftpo stop"
+
+Sns at 10 "$ftp2 start"
+
+Sns at 15 "$ftp2 stop"
+
+Sns at 16 "finish"
+
+Sis run
+
+AWK file (Open a new editor using "vi command" and write awk file and save with ".awk" extension)
+
+cwnd:- means congestion window
+
+BEGIN {
+
+{ if($6=="cwnd") don't leave space after writing ewnd printf("%f\r%f\r\n",$1,57); /* you must put \n in printf/
+
+END (
+
+
+
+
+
+
+
+
+
+
+
 ///Datagram socket///
 import java.net.*;
 
