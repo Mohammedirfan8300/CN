@@ -1,3 +1,86 @@
+point to point duplex
+set ns [new Simulator] / Letter S is capital */
+
+set nf [open lab1.nam w] / open a nam trace file in write mode/
+
+Sns namtrace-all Suf /nf-nam file */
+
+set tf [open lab1.tr w] / tf-trace file "/
+
+Sns trace-all Stf
+
+proc finish {} { provide space b/w proc and finish and all are in small case */
+
+global ns nf tf
+
+Sus flush-trace clears trace file contents */
+
+close Snf
+
+close Stf
+
+exec nam labi. nam &
+
+exit 0
+
+}
+
+set no [Sns node] / creates 4 nodes */
+
+set n1 [Sns node]
+
+set n2 [Sns node]
+
+set 13 [Sns node]
+Sns duplex-link $n0 $n2 200Mb 10ms DropTail/*Letter M is capital Mb*/ Sus duplex-link $n1 $n2 100Mb 5ms DropTail /*D and T are capital*/ Sns duplex-link $n2 $n3 1Mb 1000ms DropTail
+
+Sns queue-limit $no Sn2 10 Sns queue-limit Sn1 Sn2 10
+
+set udp0 [new Agent/UDP] / Letters A,U.D and P are capital */ Sns attach-agent $no $udpo
+
+set cbro [new Application/Traffic/CBR] / A.T.C.B and R are capital*/ Scbro set packetSize_500/*S is capital, space after underscore*/ $cbro set interval 0.005 Scbro attach-agent Sudpo
+
+set udp1 [new Agent/UDP] Sns attach-agent $n1 $udp1
+
+set cbr1 [new Application/Traffic/CBR] Scbrl attach-agent Sudp1
+set udp2 [new Agent/UDP] Sns attrach-agent $n2 Sudp2
+
+set cbr2 [new Application/Traffic/CBR] $cbr2 attach-agent Sudp2
+
+set nullo [new Agent/Null] /* A and N are capital */ Sns attach-agent $13 $nullo.
+
+$ns connect $udp0 $nullo Sns connect $udp1 $nullo
+
+$ns at 0.1 "$cbro start" $ns at 0.2 "$cbr1 start" Sns at 1.0 "finish"
+
+Sns run
+AWK file (Open a new editor using "vi command" and write awk file and save with ".awk" extension)
+
+"immediately after BEGIN should open braces **
+
+BEGIN (
+
+c=0;
+
+If ($1=="d")
+
+{
+
+c++:
+
+printf("%s\t%s\n".$5.511):
+
+} /*immediately after END should open braces {"
+
+END{
+
+printf("The number of packets dropped =%d\n".c);
+
+
+
+
+
+
 ethernet lan 
 set ns [new Simulator]
 
