@@ -1,3 +1,1097 @@
+Program-01
+
+Develop a program to illustrate the working of LED with push button
+
+ #define buttonPin 4                    // the number of the pushbutton pin
+
+#define ledPin 13                     // the number of the LED pin
+
+int buttonState = 0;              // variable for reading the pushbutton status
+
+void setup() {
+
+// initialize the LED pin as an output:
+
+pinMode(ledPin,OUTPUT);
+
+// initialize the pushbutton pin as an input:
+
+pinMode(buttonPin, INPUT);
+
+}
+
+void loop() {
+
+// read the state of the pushbutton value:
+
+buttonState = digitalRead(buttonPin);
+
+// check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+
+if (buttonState == HIGH) {
+
+// turn LED on:
+
+digitalWrite(ledPin, LOW);
+
+}
+
+else {
+
+// turn LED off:
+
+digitalWrite(ledPin,HIGH);
+
+}
+
+}
+
+OUTPUT
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    Program –02
+
+Develop a program to illustrate the working of traffic lights for pedstrians.
+
+ // Pin definitions
+
+const int carRed = 25;
+
+const int carYellow = 26;
+
+const int carGreen = 27;
+
+const int pedRed = 14;
+
+const int pedGreen = 12;
+
+void setup() {
+
+// Set LED pins as output
+
+pinMode(carRed, OUTPUT);
+
+pinMode(carYellow, OUTPUT);
+
+pinMode(carGreen, OUTPUT);
+
+pinMode(pedRed, OUTPUT);
+
+pinMode(pedGreen, OUTPUT);
+
+// Initialize traffic light (green for cars, red for pedestrians)
+
+digitalWrite(carGreen, HIGH);
+
+digitalWrite(pedRed, HIGH);
+
+}
+
+void loop() {
+
+// Step 1: Green light for cars, red for pedestrians
+
+digitalWrite(carGreen, HIGH);
+
+digitalWrite(carYellow, LOW);
+
+digitalWrite(carRed, LOW);
+
+digitalWrite(pedGreen, LOW);
+
+digitalWrite(pedRed, HIGH);
+
+delay(5000); // Cars move for 5 seconds
+
+// Step 2: Yellow light for cars, red for pedestrians
+
+digitalWrite(carGreen, LOW);
+
+digitalWrite(carYellow, HIGH);
+
+delay(2000); // Yellow light for 2 seconds
+
+// Step 3: Red light for cars, green for pedestrians
+
+digitalWrite(carYellow, LOW);
+
+digitalWrite(carRed, HIGH);
+
+digitalWrite(pedRed, LOW);
+
+digitalWrite(pedGreen, HIGH);
+
+delay(5000); // Pedestrians cross for 5 seconds
+
+// Step 4: Flash yellow light for cars before green light
+
+digitalWrite(pedGreen, LOW);
+
+digitalWrite(pedRed, HIGH);
+
+for (int i = 0; i < 3; i++) {
+
+digitalWrite(carYellow, HIGH);
+
+delay(500);
+
+digitalWrite(carYellow, LOW);
+
+delay(500);
+
+}
+
+}
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  PROGRAM—03
+
+Develop a program for fading the LED
+
+ #define ledPin 5    // Pin for the LED (can be changed based on your board)
+
+int brightness = 0;      // Initial brightness level
+
+int fadeAmount = 5; // Amount by which the brightness will
+
+//increase/decrease
+
+void setup() {
+
+// Set the LED pin as an output
+
+pinMode(ledPin, OUTPUT);
+
+}
+
+void loop() {
+
+// Set the brightness of the LED using PWM
+
+analogWrite(ledPin, brightness);
+
+// Change the brightness for the next loop
+
+brightness = brightness + fadeAmount;
+
+// Reverse the direction of the fading if brightness reaches max or min
+
+if (brightness <= 0 || brightness >= 255) {
+
+fadeAmount = -fadeAmount;
+
+}
+
+// Delay for a smoother fading effect
+
+delay(30); // Adjust this for faster/slower fading
+
+}
+
+OUTPUT:
+
+                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          
+
+                                 Program 4. 
+
+Program to blink 6 LEDs in ODD and Even Fashion.
+
+ // Pin definitions for the odd and even LEDs 
+
+#define led1 12 // Odd 
+
+#define led3 13 // Odd 
+
+#define led5 14 // Odd 
+
+#define led2 25 // Even 
+
+#define led4 26 // Even 
+
+#define led6 27 // Even 
+
+void setup() { 
+
+// Set all the LED pins as outputs 
+
+pinMode(led1, OUTPUT); 
+
+pinMode(led2, OUTPUT); 
+
+pinMode(led3, OUTPUT); 
+
+pinMode(led4, OUTPUT); 
+
+pinMode(led5, OUTPUT); 
+
+pinMode(led6, OUTPUT); 
+
+} 
+
+void loop() { 
+
+// Turn on all odd-numbered LEDs (1, 3, 5) 
+
+digitalWrite(led1, HIGH); 
+
+digitalWrite(led3, HIGH); 
+
+digitalWrite(led5, HIGH); 
+
+// Turn off all even-numbered LEDs (2, 4, 6)
+
+digitalWrite(led2, LOW); 
+
+digitalWrite(led4, LOW); 
+
+digitalWrite(led6, LOW); 
+
+delay(1000); // Wait for 1 second 
+
+// Turn off all odd-numbered LEDs (1, 3, 5) 
+
+digitalWrite(led1, LOW); 
+
+digitalWrite(led3, LOW); 
+
+digitalWrite(led5, LOW); 
+
+// Turn on all even-numbered LEDs (2, 4, 6) 
+
+digitalWrite(led2, HIGH); 
+
+digitalWrite(led4, HIGH); 
+
+digitalWrite(led6, HIGH); 
+
+delay(1000); // Wait for 1 second 
+
+}
+
+
+
+ OUTPUT:
+
+
+
+
+
+                                       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. Program to rotate servo motor both in clockwise and 
+
+anticlockwise direction.
+
+ 
+
+#include <ESP32Servo.h>  // Include the ESP32 Servo library 
+
+Servo myServo;   // Create a Servo object 
+
+int pos = 0;      // Variable to store the servo position 
+
+void setup() { 
+
+myServo.attach(4); // Attach the servo to pin 4 
+
+} 
+
+void loop() { 
+
+// Rotate the servo clockwise (from 0 to 180 degrees) 
+
+for (pos = 0; pos <= 180; pos += 1) { 
+
+myServo.write(pos); // Set the servo to the current position 
+
+delay(15); // Wait for 15ms for the servo to reach the position 
+
+} 
+
+// Rotate the servo anticlockwise (from 180 back to 0 degrees) 
+
+for (pos = 180; pos >= 0; pos -= 1) { 
+
+myServo.write(pos); // Set the servo to the current position 
+
+delay(15); // Wait for 15ms for the servo to reach the position 
+
+} 
+
+}
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+                                       
+
+
+
+
+
+
+
+
+
+                                    PROGRAM-06
+
+Develop a program to simulate the interfacing of LDR with Arduino and control the intensity of LED using LDR
+
+ #define ldrPin 15   // Pin connected to the LDR
+
+#define ledPin 4   // Pin connected to the LED
+
+int ldrValue = 0;    // Variable to store LDR reading
+
+int ledBrightness = 0; // Variable to store LED brightness
+
+void setup() {
+
+pinMode(ledPin, OUTPUT); // Set the LED pin as output
+
+Serial.begin(9600); // Start serial communication for debugging
+
+}
+
+void loop() {
+
+// Read the value from the LDR (0 to 1023)
+
+ldrValue = analogRead(ldrPin);
+
+// Map the LDR value to a range of 0 to 255 for PWM (LED brightness)
+
+ledBrightness = map(ldrValue, 0, 1023, 0, 255);
+
+// Set the brightness of the LED using PWM
+
+analogWrite(ledPin, ledBrightness);
+
+// Debugging information
+
+Serial.print("LDR Value: ");
+
+Serial.print(ldrValue);
+
+Serial.print(" LED Brightness: ");
+
+Serial.println(ledBrightness);
+
+delay(100); // Short delay for stability
+
+}
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                               PROGRAM-07
+
+Develop program to simulate the working of potentiometer and LED by varying the intensity of LED using  potentiometer.
+
+ #define potPin 15 // Pin connected to the PoT
+
+#define ledPin 4 // Pin connected to the LED
+
+int potValue = 0; // Variable to store PoT reading
+
+int ledBrightness = 0; // Variable to store LED brightness
+
+void setup() {
+
+pinMode(ledPin, OUTPUT); // Set the LED pin as output
+
+Serial.begin(9600); // Start serial communication for debugging
+
+}
+
+void loop() {
+
+// Read the value from the PoT (0 to 1023)
+
+potValue = analogRead(potPin);
+
+// Map the PoT value to a range of 0 to 255 for PWM (LED brightness)
+
+ledBrightness = map(potValue, 0, 1023, 0, 255);
+
+// Set the brightness of the LED using PWM
+
+analogWrite(ledPin, ledBrightness);
+
+// Debugging information
+
+Serial.print("Pot Value: ");
+
+Serial.print(potValue);
+
+Serial.print(" LED Brightness: ");
+
+Serial.println(ledBrightness);
+
+delay(100);  // Short delay for stability
+
+}
+
+
+
+ 
+
+
+
+
+
+
+
+8. Program to simulate the working of OLED and print the room 
+
+temperature value on OLED.
+
+ #include <Wire.h>// 
+
+#include <Adafruit_GFX.h> 
+
+#include <Adafruit_SSD1306.h> 
+
+#include "DHT.h" 
+
+#define DHTPIN 4 // Pin connected to the DHT11 sensor 
+
+#define DHTTYPE DHT11 // Type of DHT sensor 
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels 
+
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels 
+
+// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins) 
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, 
+
+-1); 
+
+DHT dht(DHTPIN, DHTTYPE); 
+
+float t = 0,h = 0; 
+
+void setup() { 
+
+Serial.begin(9600); 
+
+// Initialize the OLED display 
+
+if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
+
+Serial.println(F("SSD1306 allocation failed")); 
+
+} 
+
+dht.begin(); 
+
+} 
+
+void loop() { 
+
+t = dht.readTemperature(); 
+
+h = dht.readHumidity(); 
+
+display.clearDisplay();
+
+display.setTextSize(1); 
+
+display.setTextColor(SSD1306_WHITE); 
+
+display.setCursor(0,0); 
+
+display.print("Temperature = "); 
+
+display.println(t); 
+
+display.print("Humidity = "); 
+
+display.println(h); 
+
+display.display(); 
+
+delay(3000); 
+
+}
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+9. Program for scrolling 5 LEDs back and forth.
+
+ // Pin definitions for the 5 LEDs 
+
+const int ledPins[] = {12, 13, 14, 25, 26, 27}; // Define LED pins 
+
+const int numLeds = 6; // Total number of LEDs 
+
+void setup() { 
+
+// Set all the LED pins as outputs 
+
+for (int i = 0; i < numLeds; i++) { 
+
+pinMode(ledPins[i], OUTPUT); 
+
+} 
+
+} 
+
+void loop() { 
+
+// Scroll LEDs from left to right (forward) 
+
+for (int i = 0; i < numLeds; i++) { 
+
+digitalWrite(ledPins[i], HIGH); // Turn on the current LED 
+
+delay(200); // Wait for 200ms 
+
+digitalWrite(ledPins[i], LOW); // Turn off the current LED 
+
+} 
+
+// Scroll LEDs from right to left (backward) 
+
+for (int i = numLeds - 1; i >= 0; i--) { 
+
+digitalWrite(ledPins[i], HIGH); // Turn on the current LED 
+
+delay(200); // Wait for 200ms 
+
+digitalWrite(ledPins[i], LOW); // Turn off the current LED 
+
+} 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10. Program to calculate the distance of an object using ultrasonic sensor.
+
+ #define TRIG 11 
+
+#define ECHO 12 
+
+//define sound speed in cm/uS 
+
+#define SOUND_SPEED 0.0343 
+
+#define CM_TO_INCH 0.393701 
+
+long duration; 
+
+float distanceCm; 
+
+float distanceInch; 
+
+void setup() { 
+
+Serial.begin(9600); // Starts the serial communication 
+
+pinMode(TRIG, OUTPUT); // Sets the trigPin as an Output 
+
+pinMode(ECHO, INPUT); // Sets the echoPin as an Input 
+
+} 
+
+void loop() { 
+
+// Clears the trigPin 
+
+digitalWrite(TRIG, LOW); 
+
+delayMicroseconds(2); 
+
+// Sets the trigPin on HIGH state for 10 micro seconds 
+
+digitalWrite(TRIG, HIGH); 
+
+delayMicroseconds(10)
+
+digitalWrite(TRIG, LOW); 
+
+// Reads the echoPin, returns the sound wave travel time in microseconds 
+
+duration = pulseIn(ECHO, HIGH); 
+
+// Calculate the distance 
+
+distanceCm = duration * SOUND_SPEED/2; 
+
+// Convert to inches 
+
+distanceInch = distanceCm * CM_TO_INCH; 
+
+// Prints the distance in the Serial Monitor 
+
+Serial.print("Distance (cm): "); 
+
+Serial.println(distanceCm); 
+
+Serial.print("Distance (inch): "); 
+
+Serial.println(distanceInch); 
+
+delay(1000); 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11. Program to detect the collision using infrared sensor.
+
+ #define IR 15 
+
+void setup() { 
+
+// put your setup code here, to run once: 
+
+pinMode(IR,INPUT); 
+
+Serial.begin(9600); 
+
+} 
+
+void loop() { 
+
+// put your main code here, to run repeatedly: 
+
+int ir = digitalRead(IR); 
+
+// Serial.print(ir); 
+
+// delay(500); 
+
+if(ir == 1) 
+
+Serial.println("Object Not Detected"); 
+
+else 
+
+Serial.println("Object Detected"); 
+
+delay(1000); 
+
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12. Program to interface temperature sensor to read the room temperature, humidity and heat index and print the readings on the serial monitor.
+
+ #include "DHT.h" 
+
+#define DHT11PIN 15 
+
+DHT dht(DHT11PIN, DHT11); 
+
+void setup() 
+
+{ 
+
+Serial.begin(9600); /* Start the DHT11 Sensor */ 
+
+dht.begin(); 
+
+} 
+
+void loop() 
+
+{ 
+
+float humi = dht.readHumidity(); 
+
+float temp = dht.readTemperature(); 
+
+Serial.print("Temperature: "); 
+
+Serial.print(temp); 
+
+Serial.println(" C "); 
+
+Serial.print("Humidity: "); 
+
+Serial.println(humi); 
+
+delay(1000); 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 point to point duplex
 set ns [new Simulator] / Letter S is capital */
 
